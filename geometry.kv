@@ -13,6 +13,9 @@ ScreenManager:
 
         Button:
             text: "Circle"
+            font_size: "20sp"
+            size_hint_y: None
+            height: "50dp"
             on_release:
                 app.root.current = "calculator"
 
@@ -22,8 +25,8 @@ ScreenManager:
 
     BoxLayout:
         orientation: "vertical"
-        padding: 10
-        spacing: 10
+        padding: 20
+        spacing: 15
 
         Label:
             text: "Circle Calculator"
@@ -35,14 +38,20 @@ ScreenManager:
 
         Button:
             text: "Area"
+            size_hint_y: None
+            height: "50dp"
             on_release: root.calculate_area()
 
         Button:
             text: "Circumference"
+            size_hint_y: None
+            height: "50dp"
             on_release: root.calculate_circumference()
 
         Button:
             text: "Diameter"
+            size_hint_y: None
+            height: "50dp"
             on_release: root.calculate_diameter()
 
         Label:
@@ -50,4 +59,6 @@ ScreenManager:
 
         Button:
             text: "Back"
+            size_hint_y: None
+            height: "50dp"
             on_release: app.root.current = "home"
