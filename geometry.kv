@@ -1,20 +1,47 @@
-BoxLayout:
-    orientation: "vertical"
-    padding: 10
-    spacing: 10
+ScreenManager:
+    HomeScreen:
+    CalculatorScreen:
 
-    Label:
-        text: "Geometry Calculator"
-        font_size: "24sp"
+<HomeScreen>:
+    name: "home"
 
-    Button:
-        text: "Circle"
+    BoxLayout:
+        orientation: "vertical"
 
-    Button:
-        text: "Square"
+        Label:
+            text: "Geometry Calculator"
 
-    Button:
-        text: "Rectangle"
+        Button:
+            text: "Circle"
+            on_release:
+                app.root.current = "calculator"
 
-    Button:
-        text: "Triangle"
+
+<CalculatorScreen>:
+    name: "calculator"
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+        spacing: 10
+
+        Label:
+            text: "Circle Calculator"
+
+        TextInput:
+            id: radius
+            hint_text: "Enter Radius"
+            multiline: False
+
+        Button:
+            text: "Calculate"
+            on_release:
+                root.calculate()
+
+        Label:
+            text: root.result
+
+        Button:
+            text: "Back"
+            on_release:
+                app.root.current = "home"
