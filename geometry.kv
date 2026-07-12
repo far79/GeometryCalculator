@@ -34,14 +34,20 @@ ScreenManager:
             multiline: False
 
         Button:
-            text: "Calculate"
-            on_release:
-                root.calculate()
+            text: "Area"
+            on_release: root.calculate_area()
+
+        Button:
+            text: "Circumference"
+            on_release: root.calculate_circumference()
+
+        Button:
+            text: "Diameter"
+            on_release: root.calculate_diameter()
 
         Label:
             text: root.result
 
         Button:
             text: "Back"
-            on_release:
-                app.root.current = "home"
+            on_release: app.root.current = "home"
