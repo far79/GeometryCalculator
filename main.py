@@ -11,49 +11,59 @@ from formulas import (
 
 
 class HomeScreen(Screen):
-    pass
+
+    def open_calculator(self, shape):
+        calculator = self.manager.get_screen("calculator")
+        calculator.set_shape(shape)
+        self.manager.current = "calculator"
 
 
 class CalculatorScreen(Screen):
+    title = StringProperty("Calculator")
     result = StringProperty("")
 
-    def calculate_area(self):
+    def set_shape(self, shape):
+        self.title = f"{shape} Calculator"
+
+    def get_radius(self):
+        text = self.ids.radius.text.strip()
+
+        if not text:
+            self.result = "Please enter a radius."
+            return None
+
         try:
-            radius = float(self.ids.radius.text)
-
-            if radius <=0:
-                self.result = "Radius must be greater than 0."
-                return
-
-            self.result = f"Area = {circle_area(radius):.2f}"
+            radius = float(text)
         except ValueError:
             self.result = "Enter a valid number."
+            return None
+
+        if radius <= 0:
+            self.result = "Radius must be greater than 0."
+            return None
+
+        return radius
+
+    def calculate_area(self):
+        radius = self.get_radius()
+        if radius is None:
+            return
+
+        self.result = f"Area = {circle_area(radius):.2f}"
 
     def calculate_circumference(self):
-        try:
-            radius = float(self.ids.radius.text)
+        radius = self.get_radius()
+        if radius is None:
+            return
 
-            if radius <= 0:
-                self.result = "Radius must be greater than 0."
-                return
-
-            self.result = (
-                f"Circumference = {circle_circumference(radius):.2f}"
-            )
-        except ValueError:
-            self.result = "Enter a valid number."
+        self.result = f"Circumference = {circle_circumference(radius):.2f}"
 
     def calculate_diameter(self):
-        try:
-            radius = float(self.ids.radius.text)
+        radius = self.get_radius()
+        if radius is None:
+            return
 
-            if radius <= 0:
-                self.result = "Radius must be greater than 0."
-                return
-                
-            self.result = f"Diameter = {circle_diameter(radius):.2f}"
-        except ValueError:
-            self.result = "Enter a valid number."
+        self.result = f"Diameter = {circle_diameter(radius):.2f}"
 
 
 class GeometryCalculatorApp(App):

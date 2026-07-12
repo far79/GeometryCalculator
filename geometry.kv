@@ -24,25 +24,31 @@ ScreenManager:
             size_hint_y: None
             height: "55dp"
             on_release:
-                app.root.current = "calculator"
+                root.open_calculator("Circle")
 
         Button:
             text: "Square"
             font_size: "20sp"
             size_hint_y: None
             height: "55dp"
+            on_release:
+                root.open_calculator("Square")
 
         Button:
             text: "Rectangle"
             font_size: "20sp"
             size_hint_y: None
             height: "55dp"
+            on_release:
+                root.open_calculator("Rectangle")
 
         Button:
             text: "Triangle"
             font_size: "20sp"
             size_hint_y: None
             height: "55dp"
+            on_release:
+                root.open_calculator("Triangle")
 
         Widget:
 
@@ -56,7 +62,7 @@ ScreenManager:
         spacing: 20
 
         Label:
-            text: "Circle Calculator"
+            text: root.title
             font_size: "30sp"
             bold: True
             size_hint_y: None
