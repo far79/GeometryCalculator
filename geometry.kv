@@ -2,22 +2,49 @@ ScreenManager:
     HomeScreen:
     CalculatorScreen:
 
+
 <HomeScreen>:
     name: "home"
 
     BoxLayout:
         orientation: "vertical"
+        padding: 20
+        spacing: 20
 
         Label:
             text: "Geometry Calculator"
+            font_size: "32sp"
+            bold: True
+            size_hint_y: None
+            height: "60dp"
 
         Button:
             text: "Circle"
             font_size: "20sp"
             size_hint_y: None
-            height: "50dp"
+            height: "55dp"
             on_release:
                 app.root.current = "calculator"
+
+        Button:
+            text: "Square"
+            font_size: "20sp"
+            size_hint_y: None
+            height: "55dp"
+
+        Button:
+            text: "Rectangle"
+            font_size: "20sp"
+            size_hint_y: None
+            height: "55dp"
+
+        Button:
+            text: "Triangle"
+            font_size: "20sp"
+            size_hint_y: None
+            height: "55dp"
+
+        Widget:
 
 
 <CalculatorScreen>:
@@ -26,39 +53,56 @@ ScreenManager:
     BoxLayout:
         orientation: "vertical"
         padding: 20
-        spacing: 15
+        spacing: 20
 
         Label:
             text: "Circle Calculator"
+            font_size: "30sp"
+            bold: True
+            size_hint_y: None
+            height: "60dp"
 
         TextInput:
             id: radius
             hint_text: "Enter Radius"
             multiline: False
+            font_size: "20sp"
+            size_hint_y: None
+            height: "55dp"
 
         Button:
             text: "Area"
+            font_size: "20sp"
             size_hint_y: None
-            height: "50dp"
-            on_release: root.calculate_area()
+            height: "55dp"
+            on_release:
+                root.calculate_area()
 
         Button:
             text: "Circumference"
+            font_size: "20sp"
             size_hint_y: None
-            height: "50dp"
-            on_release: root.calculate_circumference()
+            height: "55dp"
+            on_release:
+                root.calculate_circumference()
 
         Button:
             text: "Diameter"
+            font_size: "20sp"
             size_hint_y: None
-            height: "50dp"
-            on_release: root.calculate_diameter()
+            height: "55dp"
+            on_release:
+                root.calculate_diameter()
 
         Label:
             text: root.result
+            font_size: "22sp"
+            bold: True
 
         Button:
             text: "Back"
+            font_size: "20sp"
             size_hint_y: None
-            height: "50dp"
-            on_release: app.root.current = "home"
+            height: "55dp"
+            on_release:
+                app.root.current = "home"
