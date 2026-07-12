@@ -20,6 +20,11 @@ class CalculatorScreen(Screen):
     def calculate_area(self):
         try:
             radius = float(self.ids.radius.text)
+
+            if radius <=0:
+                self.result = "Radius must be greater than 0."
+                return
+
             self.result = f"Area = {circle_area(radius):.2f}"
         except ValueError:
             self.result = "Enter a valid number."
@@ -27,6 +32,11 @@ class CalculatorScreen(Screen):
     def calculate_circumference(self):
         try:
             radius = float(self.ids.radius.text)
+
+            if radius <= 0:
+                self.result = "Radius must be greater than 0."
+                return
+
             self.result = (
                 f"Circumference = {circle_circumference(radius):.2f}"
             )
@@ -36,6 +46,11 @@ class CalculatorScreen(Screen):
     def calculate_diameter(self):
         try:
             radius = float(self.ids.radius.text)
+
+            if radius <= 0:
+                self.result = "Radius must be greater than 0."
+                return
+                
             self.result = f"Diameter = {circle_diameter(radius):.2f}"
         except ValueError:
             self.result = "Enter a valid number."
